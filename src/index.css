@@ -1,0 +1,59 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+
+html {
+  font-size:16px;
+  font-family: Roboto Slab, IBM Plex Sans, Arial, Sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+	font-family: Roboto Slab, IBM Plex Sans, Arial, Sans-serif;
+}
+
+h1 {
+  font-weight:400;
+}
+
+h2 {
+  font-weight:400;
+}
+
+h3 {
+  font-weight:300;
+}
+
+a {
+  text-decoration:none;
+  color:inherit;
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+
+::selection {
+    background-color: yellow;
+    color: black;
+}
+
+.header {
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+

@@ -1,0 +1,61 @@
+.App {
+
+}
+
+.title {
+  align-items:center;
+}
+
+.nav {
+  padding: 2rem 4rem 2rem 4rem;
+  grid-column: 1/-1;
+  list-style-type:none;
+  display: flex;
+  background-color:;
+  border-bottom:1px solid black;
+  height:6rem;
+  align-items:center;
+}
+
+.nav a {
+  color:black;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.nav-items {
+  list-style-type:none;
+  display:flex;
+  width:50%;
+  align-items:;
+  justify-content: space-around;
+  font-size:2rem;
+}
+
+
+.button {
+  float:right;
+  background-color: white;
+  border:1px solid black;
+  color: black;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font:inherit;
+}
+
+.button:hover {
+  float:right;
+  background-color: black;
+  border:1px solid black;
+  color: white;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font:inherit;
+}

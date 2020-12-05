@@ -1,0 +1,52 @@
+.ActionBar {
+	border:;
+	padding:2rem 0rem 2rem 0rem;
+	display:block;
+}
+
+button {
+	color:black;
+	background:white;
+	padding:0.5rem;
+	border:1px solid black;
+	display:inline-block;
+}
+
+button:hover {
+	color:white;
+	background:black;
+	border: 1px solid black;
+}
+
+button:focus {
+	color:white;
+	background:black;
+	border: 1px solid black;
+}
+
+input[type=text], select{
+	padding:0.5rem;
+}
+
+select {
+	border: 1px solid black;
+
+
+}
+input {
+	width:20%;
+	border: 1px solid black;
+	caret-color: black;
+	border:1px solid black;
+	float:right;
+}
+
+input:focus {
+	border:;
+	outline:1px solid black;
+}
+
+label {
+	padding: 0.5rem;
+	font-weight:500;
+}
