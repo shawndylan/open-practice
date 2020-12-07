@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PracticeList from "../practiceList";
-import ProjectList from "../projectList"
+import ProjectList from "../projectList";
 import ActionBar from "./ActionBar";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "./cardContainer.css";
 
 const Airtable = require('airtable');
@@ -21,18 +22,19 @@ class CardContainer extends Component {
 		this.state = {
 			practices: [],
 			projects:[],
-			searchValue: '',
+			value:[],
 			isLoadingPractices: true,
 			isLoadingProjects: true,
 			key: '',
 			projectKey:'',
-			value:'',
 			filterMot:'',
 			sort:'',
+			searchValue: '',
 			show: false,
 			selectedValue: [],
-			showPractices: true,
-			showProjects: false
+			toggleTags: true,
+			selectedPractice: [],
+			showCompare: false
 		}
 		this.handleClick = this.handleClick.bind(this)
 		this.handleSearch = this.handleSearch.bind(this)
@@ -46,7 +48,7 @@ class CardContainer extends Component {
 		base('Practices')
 		.select({
 			view: "Gallery",
-			maxRecords: 50,
+			maxRecords: 100,
 		})
 
 		.eachPage((records, fetchNextPage) => {
@@ -72,7 +74,6 @@ class CardContainer extends Component {
 		.eachPage((records, fetchNextPage) => {
 			this.setState({
 				projects: records,
-				value: records,
 				projectKey: records.id,
 				isLoadingProjects: false
 			});
@@ -89,12 +90,10 @@ class CardContainer extends Component {
 		console.log(e.target.value);
 	}
 
-
 	handleSort = (e) => {
 		this.setState({sort: e.target.value})
 		console.log(e.target.value)
 	}
-
 
 	openModal = (id) => {
 		const selectedValue = id !== this.state.selectedValue ? id : undefined
@@ -107,15 +106,28 @@ class CardContainer extends Component {
 		console.log("yes")
 	}
 
+	//---------------------------------compare page
+
+	addToSelected = (practice) => {
+		this.state.selectedPractice.push(practice)
+		console.log(this.state.selectedPractice)
+		console.log(this.state.selectedPractice.length)
+	}
+
+	handleCompare = (e) => {
+		e.preventDefault();
+		this.setState({showCompare:true})
+		console.log("handle compare is clicked")
+	}
+
+	//---------------------------------compare page
 
 	handleClick = (e) => {
 		e.preventDefault();
-
 		if (e.target.value === "All") {
 			this.setState({value: this.state.practices});
-
 		} else {
-			this.setState({value: this.state.practices.filter(record => record.fields.["Practice Structure"] === e.target.value)});
+			this.setState({value: this.state.practices.filter(record => record.fields["Practice Structure"][0] === e.target.value)});
 			console.log(e.target.value);
 		}
 	}
@@ -125,26 +137,21 @@ class CardContainer extends Component {
 		if (e.target.value === "All") {
 			this.setState({value: this.state.practices});
 		} else {
-
 			this.setState({value: this.state.practices.filter(record => record.fields.Motivation === e.target.value)});
 			console.log(e.target.value);
 		}
 	}
 
-	showProjects =() => {
-		this.setState ({
-			showPractices: false,
-			showProjects: true
-		})
-	}
+	handleTags = (e) => {
+		e.preventDefault();
+		this.setState({toggleTags: !this.state.toggleTags})
+		console.log(this.state.toggleTags)
 
-	showPractices =() => {
-		this.setState ({
-			showPractices: true,
-			showProjects: false
-		})
+		if (this.state.toggleTags === true) {
+		this.setState({value: this.state.practices.filter(record => record.fields.Tags ? record.fields.Tags[0] === e.target.value : null)})
+		}
+		else {this.setState({value: this.state.practices})}
 	}
-
 
 	render() {
 
@@ -155,7 +162,7 @@ class CardContainer extends Component {
 				);
 		}
 
-		else {
+		if (this.state.isLoadingPractices ===false) {
 
 			const sortedPractices = this.state.value.sort((a,b) => {
 				if (this.state.sort === "founded") {
@@ -175,61 +182,59 @@ class CardContainer extends Component {
 
 			return (
 				<div className = "cardContainer">
+					<button onClick={this.handleClick}>Go to Compare ({this.state.selectedPractice.length})</button>
 
-				<button onClick = {this.showPractices}>Practices</button>
-				<button onClick={this.showProjects}>Projects</button>
+					<Tabs forceRenderTabPanel defaultIndex={0}>
+						<TabList>
+							<Tab>Practices</Tab>
+							<Tab>Projects</Tab>
+						</TabList>
 
+						<TabPanel>
+						<div>
+							<ActionBar 
+								handleClick={this.handleClick} 
+								handleSearch={this.handleSearch} 
+								value={this.state.value} 
+								handleSort={this.handleSort} 
+								handleFilterMot = {this.handleFilterMot}
+								handleTags= {this.handleTags}
+							/>
 
-				{this.state.showPractices ?
-					[
-					<div>
-					<ActionBar 
-					handleClick={this.handleClick} 
-					handleSearch={this.handleSearch} 
-					value={this.state.value} 
-					handleSort={this.handleSort} 
-					handleFilterMot = {this.handleFilterMot}
-					/>
+							<PracticeList
+								practices={sortedPractices.filter(SearchingFor(this.state.searchValue))} 
+								key={this.state.key}
+								openModal={this.openModal}
+								show={this.state.show} 
+								closeModal={this.closeModal}
+								selectedValue={this.state.selectedValue}
+								addToSelected={this.addToSelected}
+								isLoadingPractices={this.state.isLoadingPractices}
+							/>
+						</div>
+						</TabPanel>
+						<TabPanel>
+						<div>
+							<ActionBar 
+								handleClick={this.handleClick} 
+								handleSearch={this.handleSearch} 
+								value={this.state.value} 
+								handleSort={this.handleSort} 
+								handleFilterMot = {this.handleFilterMot}
+							/>
 
-					<PracticeList
-					practices={sortedPractices.filter(SearchingFor(this.state.searchValue))} 
-					key={this.state.key}
-					openModal={this.openModal}
-					show={this.state.show} 
-					closeModal={this.closeModal}
-					selectedValue={this.state.selectedValue}
-					/>
-					</div>
+							<ProjectList
+								projects={this.state.projects}
+								key={this.state.projectKey}
+							/>
+						</div>
+						</TabPanel>
+					</Tabs>
 
-					]
-					: null}
-
-
-				{this.state.showProjects ?
-					[
-					<div>
-					<ActionBar 
-					handleClick={this.handleClick} 
-					handleSearch={this.handleSearch} 
-					value={this.state.value} 
-					handleSort={this.handleSort} 
-					handleFilterMot = {this.handleFilterMot}
-					/>
-
-					<ProjectList
-					projects={this.state.projects}
-					key={this.state.projectKey}
-					/>
-					</div>
-
-					]
-					: null}
-
-					</div>
-
-
+				</div>
 			)
 		}
+		
 	}
 }
 

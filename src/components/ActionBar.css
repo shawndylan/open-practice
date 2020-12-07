@@ -1,38 +1,46 @@
 .ActionBar {
 	border:;
-	padding:2rem 0rem 2rem 0rem;
+	padding:1.5rem;
 	display:block;
+	font-family:"IBM Plex Mono";
+	border: 1px solid black;
+	margin:1rem 0rem;
 }
 
 button {
 	color:black;
 	background:white;
-	padding:0.5rem;
+	padding:0.4rem 0.6rem;
 	border:1px solid black;
 	display:inline-block;
+	font-family:inherit;
+	margin-right:0.25rem;
 }
 
 button:hover {
 	color:white;
 	background:black;
-	border: 1px solid black;
+	border-radius:0pt;
 }
 
 button:focus {
 	color:white;
 	background:black;
-	border: 1px solid black;
+	border:none;
 }
 
+
 input[type=text], select{
-	padding:0.5rem;
+	padding:0.4rem;
+	font-family:"IBM Plex Mono";
 }
 
 select {
 	border: 1px solid black;
-
-
+	padding:0.4rem;
+	margin-right:0.25rem;
 }
+
 input {
 	width:20%;
 	border: 1px solid black;
@@ -49,4 +57,12 @@ input:focus {
 label {
 	padding: 0.5rem;
 	font-weight:500;
+}
+
+#Tags {
+	border-radius: 1000px;
+}
+
+#Tags:focus {
+	border-radius: 1000px;
 }

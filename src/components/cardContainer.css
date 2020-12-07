@@ -1,6 +1,6 @@
   .cardContainer {
   display: block;
-  margin: 0rem 4rem 0rem 4rem
+  margin: 1rem 4rem;
 
 }
 
@@ -9,7 +9,6 @@
 	text-align:center;
 }
 
-button {
-	font-size:16px;
-	
-}
+::-webkit-scrollbar { 
+  display: none; 
+  }

@@ -1,5 +1,6 @@
 import React from 'react';
 import "./ActionBar.css";
+import { IconSearch } from '@tabler/icons';
 
 
 const ActionBar = (props, value) => {
@@ -31,17 +32,11 @@ const ActionBar = (props, value) => {
 		<button value="name" id="Sort" onClick={props.handleSort}>Name</button>
 		<button value="founded" onClick={props.handleSort}>Founded</button>
 		<button value="size" onClick={props.handleSort}>Size</button>
+
+		<label htmlFor="Tags">Tags</label>
+		<button value="Exemplar" id="Tags" onClick={props.handleTags}>Exemplars</button>
+		<button value="design/build" id="Tags" onClick={props.handleTags}>design/build</button>
 		
-		
-	
-	{/* <select value="FilterByMethod" id=""> */}
-{/* 	<option value="All">All</option> */}
-{/* 	<option value="Appropriation">Appropriation</option> */}
-{/* 	<option value="Dissemination">Dissemination</option> */}
-{/* 	<option value="Empowerment">Empowerment</option> */}
-{/* 	<option value="Networking">Networking</option> */}
-{/* 	<option value="Subversion">Subversion</option> */}
-{/* </select> */}
 <input placeholder="Search Practices" onChange={props.handleSearch} type="text"/>
 </div>
 )

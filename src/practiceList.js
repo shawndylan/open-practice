@@ -5,6 +5,7 @@ import Window from './components/window';
 
 function PracticeList(props) {
 
+
 	return (
 
 		<>
@@ -19,13 +20,18 @@ function PracticeList(props) {
 							Motivation={practice.fields.Motivation}
 							Method={practice.fields.Method}
 							Size={practice.fields.Size}
-							Image={practice.fields["Cover Image"][0].url}
+							Image={practice.fields.CoverImage[0].url}
 							Founded={practice.fields["Period Active"]}
 							openModal={props.openModal}
 							id={practice.id}
+							keyPeople={practice.fields.["Key People"]}
+							keyProjects={practice.fields.["Key Projects"]}
+							url={practice.fields["Website URL"]}
+							addToSelected={props.addToSelected}
+							practice={practice}
 						/>
 
-							{props.selectedValue === practice.id ? (
+							{/* {props.selectedValue === practice.id ? (
 							<div className="window">
 								<Window 
 									show={props.show} 
@@ -36,13 +42,13 @@ function PracticeList(props) {
 									Motivation={practice.fields.Motivation}
 									Method={practice.fields.Method}
 									Size={practice.fields.Size}
-									Image={practice.fields["Cover Image"][0].url}
 									Founded={practice.fields["Period Active"]}
 									id={practice.id}
+									
 								/>
 								</div>
 							) 
-						:null}
+						:null} */}
 
 					</div>
 

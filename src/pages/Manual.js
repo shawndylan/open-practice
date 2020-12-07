@@ -41,48 +41,48 @@ class Manual extends Component {
                     <TabPanel>
                         <Tabs forceRenderTabPanel defaultIndex={0}>
                             <TabList>
-                                <Tab className="Tab-B">Collective</Tab>
-                                <Tab className="Tab-B">Cooperative</Tab>
-                                <Tab className="Tab-B">Network</Tab>
-                                <Tab className="Tab-B">Platform</Tab>
-                                <Tab className="Tab-B">Non-Profit</Tab>
-                                <Tab className="Tab-B">Baugruppen</Tab>
+                                <Tab>Collective</Tab>
+                                <Tab>Cooperative</Tab>
+                                <Tab>Network</Tab>
+                                <Tab>Platform</Tab>
+                                <Tab>Non-Profit</Tab>
+                                <Tab>Baugruppen</Tab>
                             </TabList>
                             <TabPanel>
                                 <Collective/>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                <h2>In Progress</h2>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                <h2>In Progress</h2>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                <h2>In Progress</h2>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                <h2>In Progress</h2>
                             </TabPanel>
                             <TabPanel>
-                                <h2>Any content 2</h2>
+                                <h2>In Progress</h2>
                             </TabPanel>
                         </Tabs>
                      </TabPanel>
 
                      <TabPanel>
-                     <h2>Any content 2</h2>
+                     <h2>In Progress</h2>
                      </TabPanel>
                      <TabPanel>
-                     <h2>Any content 3</h2>
+                     <h2>In Progress</h2>
                      </TabPanel>
                      <TabPanel>
-                     <h2>Any content 4</h2>
+                     <h2>In Progress</h2>
                      </TabPanel>
                      <TabPanel>
-                     <h2>Any content 5</h2>
+                     <h2>In Progress</h2>
                      </TabPanel>
                      <TabPanel>
-                     <h2>Any content 6</h2>
+                     <h2>In Progress</h2>
                      </TabPanel>
                     </Tabs>
             </div>
