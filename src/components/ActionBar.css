@@ -4,7 +4,12 @@
 	display:block;
 	font-family:"IBM Plex Mono";
 	border: 1px solid black;
-	margin:1rem 0rem;
+	margin:1rem 0rem;;
+}
+
+svg {
+	vertical-align: middle;
+	padding-right: 0.25rem;;
 }
 
 button {
@@ -27,6 +32,8 @@ button:focus {
 	color:white;
 	background:black;
 	border:none;
+	outline:none;
+	border:1px solid black;
 }
 
 

@@ -1,12 +1,15 @@
 import React, { useState }from 'react';
 import './card.css';
-import FlipIcon from '../svg/flip-icon'
+import FlipIcon from '../svg/flip-icon';
+import { IconPlus, IconArrowBarToRight } from '@tabler/icons';
 
 
 
-function Card({openModal, Name, Location, Structure, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice}) {
+
+function Card({openModal, Name, Location, Structure, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice, addBorder}) {
 
  const [flipped, setFlipped] = useState(false);
+
 
 
 const handleClick = () => {
@@ -14,10 +17,7 @@ const handleClick = () => {
 }
 
 
-
-
 	return (
-
 			<div className="card" >
 				<div className={flipped ? "flip-card flipped" : "flip-card"}>
 					<div className="card-front" >
@@ -25,7 +25,7 @@ const handleClick = () => {
 							<img src={Image} alt="practice" className="cover-image"></img>
 						</div>
 						<div className="card-front-details">
-							<div onClick = {() => openModal(id)} className="card-front-details-title">
+							<div className="card-front-details-title">
 							{Name}
 							</div>
 							<div className="card-front-details-a">
@@ -54,8 +54,11 @@ const handleClick = () => {
 							</div>
 						
 						<div className="card-bottom">
-							<button onClick={() => addToSelected(practice)}>Compare</button>
-							<FlipIcon handleClick={handleClick}/>
+							
+							<IconPlus className="plusIcon" size={20} stroke={2} onClick={() => addToSelected(practice)}/>
+							
+							<IconArrowBarToRight className="flipIcon" size={20} stroke={2} onClick={handleClick}/>
+							
 						</div>
 						</div>
 					</div>
@@ -86,7 +89,7 @@ const handleClick = () => {
 								<div><a href={url} target="_blank">{url}</a></div>
 							</div>
 						<div className="card-bottom">
-							<FlipIcon handleClick={handleClick}/>
+						<IconArrowBarToRight className="flipIcon" size={20} stroke={2} onClick={handleClick}/>
 						</div>
 					</div>
 				</div>

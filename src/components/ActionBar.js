@@ -1,13 +1,13 @@
 import React from 'react';
 import "./ActionBar.css";
-import { IconSearch } from '@tabler/icons';
+import { IconSearch, IconFilter, IconArrowsSort, IconTag, IconPlus } from '@tabler/icons';
 
 
-const ActionBar = (props, value) => {
+const ActionBar = (props, value, handleCompare) => {
 	return (
 		<div className = "ActionBar">
 
-		<label htmlFor="Filter">Filter</label>
+		<label htmlFor="Filter"><IconFilter size={20} />Filter</label>
 
 		<select selected= {value} onChange={props.handleClick} id="Filter">
 		<option value="All">Structure</option>
@@ -28,14 +28,16 @@ const ActionBar = (props, value) => {
 			<option value="Professional">Professional</option>
 		</select>
 
-		<label htmlFor="Sort">Sort</label>
+		<label htmlFor="Sort"><IconArrowsSort size={20}/>Sort</label>
 		<button value="name" id="Sort" onClick={props.handleSort}>Name</button>
 		<button value="founded" onClick={props.handleSort}>Founded</button>
 		<button value="size" onClick={props.handleSort}>Size</button>
 
-		<label htmlFor="Tags">Tags</label>
+		<label htmlFor="Tags"><IconTag size={20}/>Tags</label>
 		<button value="Exemplar" id="Tags" onClick={props.handleTags}>Exemplars</button>
 		<button value="design/build" id="Tags" onClick={props.handleTags}>design/build</button>
+
+		<button className="compare-button" onClick={props.handleCompare}><IconPlus size={15}/>Compare ({props.counter})</button>
 		
 <input placeholder="Search Practices" onChange={props.handleSearch} type="text"/>
 </div>

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PracticeList from "../practiceList";
 import ProjectList from "../projectList";
 import ActionBar from "./ActionBar";
+import Compare from '../pages/compare';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { IconArrowBack } from '@tabler/icons';
 import "./cardContainer.css";
 
 const Airtable = require('airtable');
@@ -34,11 +36,11 @@ class CardContainer extends Component {
 			selectedValue: [],
 			toggleTags: true,
 			selectedPractice: [],
-			showCompare: false
+			showCompare: false,
+			addBorder: false
 		}
 		this.handleClick = this.handleClick.bind(this)
 		this.handleSearch = this.handleSearch.bind(this)
-		this.openModel = this.openModal.bind(this)
 	}
 
 	componentDidMount() {
@@ -95,21 +97,25 @@ class CardContainer extends Component {
 		console.log(e.target.value)
 	}
 
-	openModal = (id) => {
-		const selectedValue = id !== this.state.selectedValue ? id : undefined
-		this.setState({selectedValue})
-		console.log(selectedValue)
-	}
+	// openModal = (id) => {
+	// 	const selectedValue = id !== this.state.selectedValue ? id : undefined
+	// 	this.setState({selectedValue})
+	// 	console.log(selectedValue)
+	// }
 
-	closeModal = (id) => {
-		this.setState({selectedValue: 0})
-		console.log("yes")
-	}
+	// closeModal = (id) => {
+	// 	this.setState({selectedValue: 0})
+	// 	console.log("yes")
+	// }
 
 	//---------------------------------compare page
 
 	addToSelected = (practice) => {
-		this.state.selectedPractice.push(practice)
+		this.setState(prevState => ({
+			selectedPractice: [...prevState.selectedPractice, practice]
+		  }))
+		  this.setState({addBorder:true})
+
 		console.log(this.state.selectedPractice)
 		console.log(this.state.selectedPractice.length)
 	}
@@ -117,7 +123,6 @@ class CardContainer extends Component {
 	handleCompare = (e) => {
 		e.preventDefault();
 		this.setState({showCompare:true})
-		console.log("handle compare is clicked")
 	}
 
 	//---------------------------------compare page
@@ -162,7 +167,33 @@ class CardContainer extends Component {
 				);
 		}
 
-		if (this.state.isLoadingPractices ===false) {
+		if (this.state.showCompare === true) {
+			return(
+				<div>
+					<div className="ActionBar">
+						<button className="back-button"><a href ="/index"><IconArrowBack size={20}/>Back to Index</a></button>
+					</div>
+					<div className="compare-card">
+						{this.state.selectedPractice.map(item =>
+							<Compare key={item.id}
+								name={item.fields.Name}
+								foundingYear={item.fields.["Year Founded"]}
+								Location={item.fields.Location}
+								Structure={item.fields["Practice Structure"]}
+								Motivation={item.fields.Motivation}
+								Method={item.fields.Method}
+								Size={item.fields.Size}
+								Image={item.fields.CoverImage[0].url}
+								Founded={item.fields["Period Active"]}
+								keyPeople={item.fields.["Key People"]}
+								keyProjects={item.fields.["Key Projects"]}
+								url={item.fields["Website URL"]}
+							/>
+						)}
+					</div>
+				</div>
+			)
+		}
 
 			const sortedPractices = this.state.value.sort((a,b) => {
 				if (this.state.sort === "founded") {
@@ -178,11 +209,12 @@ class CardContainer extends Component {
 				}
 
 			})
-
+		
+	
 
 			return (
 				<div className = "cardContainer">
-					<button onClick={this.handleClick}>Go to Compare ({this.state.selectedPractice.length})</button>
+					
 
 					<Tabs forceRenderTabPanel defaultIndex={0}>
 						<TabList>
@@ -192,6 +224,7 @@ class CardContainer extends Component {
 
 						<TabPanel>
 						<div>
+
 							<ActionBar 
 								handleClick={this.handleClick} 
 								handleSearch={this.handleSearch} 
@@ -199,6 +232,8 @@ class CardContainer extends Component {
 								handleSort={this.handleSort} 
 								handleFilterMot = {this.handleFilterMot}
 								handleTags= {this.handleTags}
+								handleCompare={this.handleCompare}
+								counter={this.state.selectedPractice.length}
 							/>
 
 							<PracticeList
@@ -210,6 +245,7 @@ class CardContainer extends Component {
 								selectedValue={this.state.selectedValue}
 								addToSelected={this.addToSelected}
 								isLoadingPractices={this.state.isLoadingPractices}
+								addBorder={this.state.addBorder}
 							/>
 						</div>
 						</TabPanel>
@@ -233,7 +269,7 @@ class CardContainer extends Component {
 
 				</div>
 			)
-		}
+		
 		
 	}
 }

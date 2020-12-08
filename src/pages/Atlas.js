@@ -50,7 +50,14 @@ class Atlas extends Component {
                         />
                      </TabPanel>
                      <TabPanel>
-                     <h2>In Progress</h2>
+                     <Iframe 
+                        src='https://flo.uri.sh/visualisation/3946746/embed' 
+                        title='Interactive or visual content' 
+                        frameBorder='0'
+                        scrolling='no'
+                        width="100%"
+                        height="600px"
+                      />
                      </TabPanel>
                     </Tabs>
     </div>

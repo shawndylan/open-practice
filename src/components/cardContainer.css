@@ -12,3 +12,13 @@
 ::-webkit-scrollbar { 
   display: none; 
   }
+
+  .compare-card {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  button:hover {
+    background-color: black;
+    color:white;
+  }

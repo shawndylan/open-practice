@@ -1,0 +1,30 @@
+.compare-page {
+    border: 1px solid blue;
+    color:blue;
+}
+
+.compare-page-title {
+    padding:4rem;
+    text-align:center;
+    vertical-align: middle;
+    font-size:400%;
+
+}
+
+.compare-page-header {
+    color:white;
+    background-color: blue;
+    padding:0.25rem 0.5rem;
+    font-size: 14px;
+    font-family:"IBM Plex Mono";
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.compare-page-item {
+    padding:4rem;
+    text-align:center;
+    vertical-align: middle;
+
+}

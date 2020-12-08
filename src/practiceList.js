@@ -29,6 +29,7 @@ function PracticeList(props) {
 							url={practice.fields["Website URL"]}
 							addToSelected={props.addToSelected}
 							practice={practice}
+							addBorder={props.addBorder}
 						/>
 
 							{/* {props.selectedValue === practice.id ? (
