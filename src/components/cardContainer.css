@@ -15,10 +15,16 @@
 
   .compare-card {
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-auto-flow:column;
+    overflow:scroll;
   }
 
-  button:hover {
+  .back-button:hover {
+    colour:white;
     background-color: black;
-    color:white;
+  }
+
+
+  .back-button-link:hover {
+    color:white
   }

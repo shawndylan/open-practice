@@ -1,11 +1,22 @@
 .ActionBar {
-	border:;
 	padding:1.5rem;
 	display:block;
 	font-family:"IBM Plex Mono";
 	border: 1px solid black;
-	margin:1rem 0rem;;
+	margin:1rem 0rem;
+	
+
 }
+
+.Btn-Group {
+	display:inline-block;
+	padding:0.25rem;
+}
+.Btn-Group-Search {
+	padding:0.25rem;
+	float:right;
+}
+
 
 svg {
 	vertical-align: middle;
@@ -40,6 +51,21 @@ button:focus {
 input[type=text], select{
 	padding:0.4rem;
 	font-family:"IBM Plex Mono";
+	
+}
+
+input {
+	width:18rem;
+	min-width:20%;
+	border: 1px solid black;
+	caret-color: black;
+	border:1px solid black;
+	float:right;
+	padding:0.25rem;
+}
+
+input:focus {
+	outline:1px solid black;
 }
 
 select {
@@ -48,18 +74,6 @@ select {
 	margin-right:0.25rem;
 }
 
-input {
-	width:20%;
-	border: 1px solid black;
-	caret-color: black;
-	border:1px solid black;
-	float:right;
-}
-
-input:focus {
-	border:;
-	outline:1px solid black;
-}
 
 label {
 	padding: 0.5rem;

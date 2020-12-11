@@ -46,7 +46,6 @@
 	transform: rotateY(180deg);
 	display:grid;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-	background-color:;
 }
 
 .structure {
@@ -97,7 +96,6 @@
 }
 
 .card-front-details-title {
-	background-color:;
 	grid-column: 1/3;
 	grid-row:1/3;
 	font-size:1rem;
@@ -123,7 +121,6 @@
 .card-front-details-a {
 	grid-column: 1/2;
 	grid-row:2/4;
-	background-color:;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow: ellipsis;
@@ -133,7 +130,6 @@
 .card-front-details-b {
 	grid-column: 2/3;
 	grid-row:2/4;
-	background-color: ;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow: ellipsis;
@@ -144,38 +140,32 @@
 .card-front-details-c {
 	grid-column: 1/2;
 	grid-row:4/6;
-	background-color:;
 }
 
 .card-front-details-d {
 	grid-column: 2/3;
 	grid-row:4/6;
-	background-color: ;
 }
 
 .card-front-details-e {
 	grid-column: 1/2;
 	grid-row:6/8;
-	background-color: ;
 }
 
 .card-front-details-f {
 	grid-column: 2/3;
 	grid-row:6/8;
-	background-color: ;
 }
 
 /*----CARD BACK----*/
 
 .card-back-top {
-	background-color:;
 	padding:0.75rem;
 	font-family: system-ui,Roboto,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;
 	font-size:0.8rem;
 }
 
 .card-back-top-title {
-	background-color:;
 	font-size:1rem;
 	font-weight: 500;
 }
@@ -187,7 +177,6 @@
 .card-back-details-a {
 	grid-column: 1/3;
 	grid-row:2/4;
-	background-color:;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow: ellipsis;
@@ -196,7 +185,6 @@
 .card-back-details-b {
 	grid-column: 1/3;
 	grid-row:4/6;
-	background-color:;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow: ellipsis;
@@ -207,7 +195,6 @@
 .card-back-details-c {
 	grid-column: 1/3;
 	grid-row:6/8;
-	background-color:;
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow: ellipsis;
@@ -239,7 +226,6 @@
 }
 
 .card-bottom {
-	background-color:;
 	grid-row:8/9;
 	grid-column:1/3;	
 }
@@ -248,7 +234,6 @@
 	float:right;
 	bottom:10px;
 	right:10px;
-	background-color: ;
 }
 
 .add-icon {

@@ -24,8 +24,8 @@ function PracticeList(props) {
 							Founded={practice.fields["Period Active"]}
 							openModal={props.openModal}
 							id={practice.id}
-							keyPeople={practice.fields.["Key People"]}
-							keyProjects={practice.fields.["Key Projects"]}
+							keyPeople={practice.fields["Key People"]}
+							keyProjects={practice.fields["Key Projects"]}
 							url={practice.fields["Website URL"]}
 							addToSelected={props.addToSelected}
 							practice={practice}

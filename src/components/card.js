@@ -6,6 +6,7 @@ import { IconPlus, IconArrowBarToRight } from '@tabler/icons';
 
 
 
+
 function Card({openModal, Name, Location, Structure, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice, addBorder}) {
 
  const [flipped, setFlipped] = useState(false);

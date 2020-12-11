@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PracticeList from "../practiceList";
 import ProjectList from "../projectList";
 import ActionBar from "./ActionBar";
+import ActionBarProjects from "./ActionBarProjects";
 import Compare from '../pages/compare';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { IconArrowBack } from '@tabler/icons';
@@ -17,6 +18,13 @@ function SearchingFor(searchValue) {
 
 }
 
+function SearchingForProjects(searchValueProjects) {
+	return function (x) {
+		return x.fields.Name.toLowerCase().includes(searchValueProjects.toLowerCase()) || !searchValueProjects ;
+	}
+
+}
+
 class CardContainer extends Component {
 
 	constructor(props) {
@@ -25,6 +33,7 @@ class CardContainer extends Component {
 			practices: [],
 			projects:[],
 			value:[],
+			valueB:[],
 			isLoadingPractices: true,
 			isLoadingProjects: true,
 			key: '',
@@ -32,14 +41,15 @@ class CardContainer extends Component {
 			filterMot:'',
 			sort:'',
 			searchValue: '',
+			searchValueProjects: '',
 			show: false,
 			selectedValue: [],
-			toggleTags: true,
+			toggleTagsPractices: true,
+			toggleTagsProjects: true,
 			selectedPractice: [],
 			showCompare: false,
 			addBorder: false
 		}
-		this.handleClick = this.handleClick.bind(this)
 		this.handleSearch = this.handleSearch.bind(this)
 	}
 
@@ -76,6 +86,7 @@ class CardContainer extends Component {
 		.eachPage((records, fetchNextPage) => {
 			this.setState({
 				projects: records,
+				valueB: records,
 				projectKey: records.id,
 				isLoadingProjects: false
 			});
@@ -86,15 +97,31 @@ class CardContainer extends Component {
 
 	}
 
+	// ---------------------- SEARCHING-------------------------
+
 	handleSearch = (e) => {
 		e.preventDefault();
 		this.setState({searchValue: e.target.value});
 		console.log(e.target.value);
 	}
 
-	handleSort = (e) => {
+	handleSearchProjects = (f) => {
+		f.preventDefault();
+		this.setState({searchValueProjects: f.target.value});
+		console.log(f.target.value);
+	}
+
+	// ---------------------- SORTING -------------------------
+
+
+	handleSortPractices = (e) => {
 		this.setState({sort: e.target.value})
 		console.log(e.target.value)
+	}
+
+	handleSortProjects = (f) => {
+		this.setState({sort: f.target.value})
+		console.log(f.target.value)
 	}
 
 	// openModal = (id) => {
@@ -108,7 +135,7 @@ class CardContainer extends Component {
 	// 	console.log("yes")
 	// }
 
-	//---------------------------------compare page
+	// ---------------------- COMPARING -------------------------
 
 	addToSelected = (practice) => {
 		this.setState(prevState => ({
@@ -125,12 +152,12 @@ class CardContainer extends Component {
 		this.setState({showCompare:true})
 	}
 
-	//---------------------------------compare page
+	// ---------------------- FILTERING -------------------------
 
-	handleClick = (e) => {
+	handleFilterStructure = (e) => {
 		e.preventDefault();
 		if (e.target.value === "All") {
-			this.setState({value: this.state.practices});
+			this.setState({practices: this.state.practices});
 		} else {
 			this.setState({value: this.state.practices.filter(record => record.fields["Practice Structure"][0] === e.target.value)});
 			console.log(e.target.value);
@@ -147,16 +174,41 @@ class CardContainer extends Component {
 		}
 	}
 
-	handleTags = (e) => {
-		e.preventDefault();
-		this.setState({toggleTags: !this.state.toggleTags})
-		console.log(this.state.toggleTags)
+	handleFilterProjectType = (f) => {
+		f.preventDefault();
+		if (f.target.value === "All") {
+			this.setState({valueB: this.state.projects});
+		} else {
+			this.setState({valueB: this.state.projects.filter(record => record.fields["Project Type"][0] === f.target.value)});
+			console.log(f.target.value);
+		}
+	}
 
-		if (this.state.toggleTags === true) {
+	// ---------------------- TAGGING -------------------------
+
+	handleTagsPractices = (e) => {
+		e.preventDefault();
+		this.setState({toggleTagsPractices: !this.state.toggleTagsPractices})
+		console.log(this.state.toggleTagsPractices)
+
+		if (this.state.toggleTagsPractices === true) {
 		this.setState({value: this.state.practices.filter(record => record.fields.Tags ? record.fields.Tags[0] === e.target.value : null)})
 		}
 		else {this.setState({value: this.state.practices})}
 	}
+
+	handleTagsProjects = (e) => {
+		e.preventDefault();
+		this.setState({toggleTagsProjects: !this.state.toggleTagsProjects})
+		console.log(this.state.toggleTagsProjects)
+
+		if (this.state.toggleTagsProjects === true) {
+		this.setState({valueB: this.state.projects.filter(record => record.fields.Tags ? record.fields.Tags[0] === e.target.value : null)})
+		}
+		else {this.setState({valueB: this.state.projects})}
+	}
+
+	// ---------------------- RENDER -------------------------
 
 	render() {
 
@@ -171,13 +223,13 @@ class CardContainer extends Component {
 			return(
 				<div>
 					<div className="ActionBar">
-						<button className="back-button"><a href ="/index"><IconArrowBack size={20}/>Back to Index</a></button>
+						<button className="back-button" onclick={this.handleCompare}><a className="back-button-link" id="back" href ="/index"><IconArrowBack size={20}/>Back to Index</a></button>
 					</div>
 					<div className="compare-card">
 						{this.state.selectedPractice.map(item =>
 							<Compare key={item.id}
 								name={item.fields.Name}
-								foundingYear={item.fields.["Year Founded"]}
+								foundingYear={item.fields["Year Founded"]}
 								Location={item.fields.Location}
 								Structure={item.fields["Practice Structure"]}
 								Motivation={item.fields.Motivation}
@@ -185,9 +237,12 @@ class CardContainer extends Component {
 								Size={item.fields.Size}
 								Image={item.fields.CoverImage[0].url}
 								Founded={item.fields["Period Active"]}
-								keyPeople={item.fields.["Key People"]}
-								keyProjects={item.fields.["Key Projects"]}
+								keyPeople={item.fields["Key People"]}
+								keyProjects={item.fields["Key Projects"]}
 								url={item.fields["Website URL"]}
+								counter={this.state.selectedPractice.length}
+								orgChart={item.fields["Org Chart"][0].url}
+								countryDiagram={item.fields["Country Diagram"][0].url}
 							/>
 						)}
 					</div>
@@ -197,20 +252,27 @@ class CardContainer extends Component {
 
 			const sortedPractices = this.state.value.sort((a,b) => {
 				if (this.state.sort === "founded") {
-					return parseInt(a.fields.["Year Founded"]) - parseInt(b.fields.["Year Founded"])
+					return parseInt(a.fields["Year Founded"]) - parseInt(b.fields["Year Founded"])
 				}
 
 				else if (this.state.sort === "size") {
-					return a.fields.["Actual Size"] - b.fields.["Actual Size"]
+					return a.fields["Actual Size"] - b.fields["Actual Size"]
 				}
 
 				else if (this.state.sort === "name") {
 					return a.fields.Name.localeCompare(b.fields.Name)
 				}
-
 			})
-		
-	
+
+			const sortedProjects = this.state.valueB.sort((a,b) => {
+				if (this.state.sort === "founded") {
+					return parseInt(a.fields["Year Start"]) - parseInt(b.fields["Year Start"])
+				}
+				else if (this.state.sort === "name") {
+					return a.fields.Name.localeCompare(b.fields.Name)
+				}
+			})
+
 
 			return (
 				<div className = "cardContainer">
@@ -226,12 +288,12 @@ class CardContainer extends Component {
 						<div>
 
 							<ActionBar 
-								handleClick={this.handleClick} 
-								handleSearch={this.handleSearch} 
-								value={this.state.value} 
-								handleSort={this.handleSort} 
+								handleFilterStructure={this.handleFilterStructure}
 								handleFilterMot = {this.handleFilterMot}
-								handleTags= {this.handleTags}
+								handleSearch={this.handleSearch}
+								value={this.state.value} 
+								handleSort={this.handleSortPractices} 
+								handleTags= {this.handleTagsPractices}
 								handleCompare={this.handleCompare}
 								counter={this.state.selectedPractice.length}
 							/>
@@ -251,16 +313,16 @@ class CardContainer extends Component {
 						</TabPanel>
 						<TabPanel>
 						<div>
-							<ActionBar 
+							<ActionBarProjects
 								handleClick={this.handleClick} 
-								handleSearch={this.handleSearch} 
-								value={this.state.value} 
-								handleSort={this.handleSort} 
-								handleFilterMot = {this.handleFilterMot}
+								handleSearch={this.handleSearchProjects} 
+								handleTags= {this.handleTagsProjects}
+								handleSort={this.handleSortProjects} 
+								handleFilterA = {this.handleFilterProjectType}
 							/>
 
 							<ProjectList
-								projects={this.state.projects}
+								projects={sortedProjects.filter(SearchingForProjects(this.state.searchValueProjects))} 
 								key={this.state.projectKey}
 							/>
 						</div>

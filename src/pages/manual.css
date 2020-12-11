@@ -7,10 +7,19 @@
 	margin: 1rem 4rem;
 }
 
-.mnl-collective {
-	padding: 14rem 24rem;
-	border:1px solid #aaa;
+.manual-page {
+	padding: 5%;
+	border-top:1px solid transparent;
 	display:grid;
 	grid-template-columns: 1fr 1fr;
+	grid-gap:1rem;
+	border: 1px solid black;;
+	border-top:0;
+	min-height:64vh;
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
 }
-  
+
+.definition {
+	width:80%;
+}

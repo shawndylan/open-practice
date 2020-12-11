@@ -1,19 +1,23 @@
 .compare-page {
-    border: 1px solid blue;
-    color:blue;
+    border: 1px solid black;
+    color:black;
+}
+
+.compare-container {
+    height:auto;
+    max-width:50vw;
 }
 
 .compare-page-title {
     padding:4rem;
     text-align:center;
     vertical-align: middle;
-    font-size:400%;
-
+    font-size:200%;
 }
 
 .compare-page-header {
     color:white;
-    background-color: blue;
+    background-color: black;
     padding:0.25rem 0.5rem;
     font-size: 14px;
     font-family:"IBM Plex Mono";
@@ -26,5 +30,21 @@
     padding:4rem;
     text-align:center;
     vertical-align: middle;
+    font-size:200%;
+}
 
+.org-chart, .country-diagram {
+    height: auto;
+    max-width:40vw;
+    padding:0rem 4rem;
+    display:block;
+    margin: auto;
+}
+
+.org-chart {
+    padding:2rem;
+}
+
+.org-container {
+    height:500px;
 }
