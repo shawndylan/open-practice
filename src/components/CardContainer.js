@@ -20,7 +20,7 @@ function SearchingFor(searchValue) {
 
 function SearchingForProjects(searchValueProjects) {
 	return function (x) {
-		return x.fields.Name.toLowerCase().includes(searchValueProjects.toLowerCase()) || !searchValueProjects ;
+		return x.fields.Name.toLowerCase().includes(searchValueProjects.toLowerCase()) || !searchValueProjects || x.fields.PracticeName.toLowerCase().includes(searchValueProjects.toLowerCase()) || !searchValueProjects ;
 	}
 
 }
@@ -208,9 +208,12 @@ class CardContainer extends Component {
 		else {this.setState({valueB: this.state.projects})}
 	}
 
+
 	// ---------------------- RENDER -------------------------
 
 	render() {
+
+		console.log()
 
 		if (this.state.isLoadingPractices || this.state.isLoadingProjects) {
 			return (
@@ -223,7 +226,7 @@ class CardContainer extends Component {
 			return(
 				<div>
 					<div className="ActionBar">
-						<button className="back-button" onclick={this.handleCompare}><a className="back-button-link" id="back" href ="/index"><IconArrowBack size={20}/>Back to Index</a></button>
+						<button className="back-button"><a className="back-button-link" id="back" href ="/index"><IconArrowBack size={20}/>Back to Index</a></button>
 					</div>
 					<div className="compare-card">
 						{this.state.selectedPractice.map(item =>
@@ -243,6 +246,7 @@ class CardContainer extends Component {
 								counter={this.state.selectedPractice.length}
 								orgChart={item.fields["Org Chart"][0].url}
 								countryDiagram={item.fields["Country Diagram"][0].url}
+								Locality={item.fields["Locality Score"]}
 							/>
 						)}
 					</div>
@@ -252,7 +256,7 @@ class CardContainer extends Component {
 
 			const sortedPractices = this.state.value.sort((a,b) => {
 				if (this.state.sort === "founded") {
-					return parseInt(a.fields["Year Founded"]) - parseInt(b.fields["Year Founded"])
+					return parseInt(b.fields["Year Founded"]) - parseInt(a.fields["Year Founded"])
 				}
 
 				else if (this.state.sort === "size") {

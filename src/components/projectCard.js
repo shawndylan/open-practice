@@ -5,13 +5,15 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 
 
-function Card({ Name, Location, Structure, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice, Locality, Autonomy, Conventionality}) {
+function ProjectCard({ Name, Location, ProjectType, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice, Locality, Autonomy, Conventionality, YearEnd, Tools, ProjectMethod, PracticeName}) {
 
  const [flipped, setFlipped] = useState(false);
 
 const handleClick = () => {
 	setFlipped (!flipped)
 }
+
+const separator = ", "
 
 	return (
 			<div className="card" >
@@ -25,28 +27,34 @@ const handleClick = () => {
 							{Name}
 							</div>
 							<div className="card-front-details-a">
-								<div className="card-heading">Years Active</div>
-								<div>{Founded}</div>
+								<div className="card-heading">Practice Name</div>
+								<div className="card-practice-name">{PracticeName}</div>
 							</div>
-							<div className="card-front-details-b">
+							{/* <div className="card-front-details-b">
+								<div className="card-heading"></div>
+								<div className="card-text"></div>
+							</div> */}
+							<div className="card-front-details-c">
+								<div className="card-heading">Completed</div>
+								<div className="card-text">{YearEnd}</div>
+							</div>
+							<div className="card-front-details-d">
 								<div className="card-heading">Location</div>
 								<div className="card-text">{Location}</div>
 							</div>
-							<div className="card-front-details-c">
-								<div className="card-heading">Structure</div>
-								<div className="highlighted">{Structure}</div>
+							<div className="card-front-details-e-project">
+								<div className="card-heading">Project Type</div>
+								{ProjectType.map((project) => {
+                                    const separator = ", ";
+                                        return(
+                                        <div className="card-text">{project}</div>
+                                        );
+                                    })
+                                }
 							</div>
-							<div className="card-front-details-d">
+							<div className="card-front-details-f-project">
 								<div className="card-heading">Size</div>
 								<div className="card-text">{Size}</div>
-							</div>
-							<div className="card-front-details-e">
-								<div className="card-heading">Motivation</div>
-								<div className="card-text">{Motivation}</div>
-							</div>
-							<div className="card-front-details-f">
-								<div className="card-heading">Method</div>
-								<div className="card-text">{Method}</div>
 							</div>
 						</div>
 						<div className="card-bottom">
@@ -57,6 +65,10 @@ const handleClick = () => {
 					<div className="card-back">
 						<div className="card-back-top">
 							<div className="card-back-top-title">{Name}</div>
+							{/* <div className="card-heading">Years Active</div>
+							<div>{Founded}</div>
+							<div className="card-heading">Location</div>
+							<div>{Location}</div> */}
 						</div>
 
 						<div className="card-back-details">
@@ -69,7 +81,6 @@ const handleClick = () => {
 									max={10}
 									tooltip={"off"}
 								/>
-								<br></br>
 							
 							
 								<div className="slider-headingA">Unconventional</div>
@@ -80,7 +91,6 @@ const handleClick = () => {
 									max={10}
 									tooltip={"off"}
 								/>
-								<br></br>
 							
 							
 								<div className="slider-headingA">Dependant</div>
@@ -91,15 +101,14 @@ const handleClick = () => {
 									max={10}
 									tooltip={"off"}
 								/>
-								<br></br>
 							</div>
 							<div className="card-back-details-a">
-							`	<div className="card-heading">Key People</div>
-								<div className="card-text">{keyPeople}</div>
+							`	<div className="card-heading">Key Tools</div>
+								<div className="card-text">{Tools}</div>`
 							</div>
 							<div className="card-back-details-b">
-								<div className="card-heading">Key Projects</div>
-								<div className="card-text">{keyProjects}</div>
+								<div className="card-heading">Key Method</div>
+								<div className="card-text">{ProjectMethod}</div>
 							</div>		
 							<div className="card-back-details-c">
 								<div className="card-heading">URL</div>
@@ -115,4 +124,4 @@ const handleClick = () => {
 			);
 }
 
-export default Card;
+export default ProjectCard;

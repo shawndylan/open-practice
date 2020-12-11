@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from './components/card';
 import './practiceList.css';
-import Window from './components/window';
 
 function PracticeList(props) {
 
@@ -21,6 +20,8 @@ function PracticeList(props) {
 							Method={practice.fields.Method}
 							Size={practice.fields.Size}
 							Image={practice.fields.CoverImage[0].url}
+							ImageHeight={practice.fields.CoverImage[0].thumbnails.small.height}
+							ImageWidth={practice.fields.CoverImage[0].thumbnails.small.width}
 							Founded={practice.fields["Period Active"]}
 							openModal={props.openModal}
 							id={practice.id}
@@ -29,7 +30,9 @@ function PracticeList(props) {
 							url={practice.fields["Website URL"]}
 							addToSelected={props.addToSelected}
 							practice={practice}
-							addBorder={props.addBorder}
+							Locality={practice.fields["Locality Score"]}
+							Conventionality={practice.fields["Conventionality Score"]}
+							Autonomy={practice.fields["Autonomy Score"]}
 						/>
 
 							{/* {props.selectedValue === practice.id ? (
@@ -45,7 +48,6 @@ function PracticeList(props) {
 									Size={practice.fields.Size}
 									Founded={practice.fields["Period Active"]}
 									id={practice.id}
-									
 								/>
 								</div>
 							) 

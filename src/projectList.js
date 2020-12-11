@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './components/card';
+import ProjectCard from './components/projectCard';
 import './practiceList.css';
 import Window from './components/window';
 
@@ -12,13 +12,18 @@ return (
 			<div className ="practiceList">
 				{props.projects.map((project, projectKey) => 
 					<div key={projectKey}>
-						<Card 
+						<ProjectCard 
 							Name={project.fields.Name}
+							PracticeName={project.fields.PracticeName}
 							Location={project.fields.["Project Location"]}
 							Type={project.fields["Project Type"]}
 							Size={project.fields.Scale}
 							id={project.id}
 							Image={project.fields["Project Cover Image"][0].url}
+							ProjectType={project.fields["Project Type"]}
+							YearEnd={project.fields["Year End"]}
+							Tools={project.fields.ToolsUsed}
+							ProjectMethod={project.fields.ProjectMethod}
 						/>
 
 							{props.selectedValue === project.id ? (

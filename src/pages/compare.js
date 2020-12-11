@@ -38,6 +38,9 @@ function Compare(props) {
                 <h3 className="compare-page-header">Org Chart</h3>
                 <img className="org-chart" src={props.orgChart} alt="diagram"></img>
             </div>
+            <div className="Locality">
+                <h3 className="compare-page-header">{props.Locality}</h3>
+            </div>
         </div>
     );
 }

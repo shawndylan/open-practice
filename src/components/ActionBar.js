@@ -1,6 +1,6 @@
 import React from 'react';
 import "./ActionBar.css";
-import { IconSearch, IconFilter, IconArrowsSort, IconTag, IconPlus } from '@tabler/icons';
+import { IconFilter, IconArrowsSort, IconTag, IconPlus } from '@tabler/icons';
 
 
 const ActionBar = (props, value) => {
