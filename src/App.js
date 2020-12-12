@@ -25,9 +25,9 @@ render () {
 
         <Nav />
         <Switch>
-          <Route path="/" exact component={Home}/>
+          <Route path="/" exact component={Home} />
           <Route path="/Atlas" component={Atlas}/>
-          <Route path="/Index" component={CardContainer}/>
+          <Route path="/Index" render={(props) => <CardContainer key={props.location.key}/>}/>
           <Route path="/Manual" component={Manual}/>
         </Switch>
 

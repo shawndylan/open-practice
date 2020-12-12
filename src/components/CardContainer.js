@@ -7,6 +7,7 @@ import Compare from '../pages/compare';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { IconArrowBack } from '@tabler/icons';
 import "./cardContainer.css";
+import { Link, Router } from "react-router-dom";
 
 const Airtable = require('airtable');
 const base = new Airtable({apiKey: 'keyi2cyYWlGXpGrSW'}).base('appk1zUKf5TWFYhRM');
@@ -209,6 +210,8 @@ class CardContainer extends Component {
 	}
 
 
+
+
 	// ---------------------- RENDER -------------------------
 
 	render() {
@@ -226,8 +229,9 @@ class CardContainer extends Component {
 			return(
 				<div>
 					<div className="ActionBar">
-						<button className="back-button"><a className="back-button-link" id="back" href ="/index"><IconArrowBack size={20}/>Back to Index</a></button>
+						<button className="back-button"><Link to="/Index"><IconArrowBack size={20}/>Back to Index</Link></button>
 					</div>
+					
 					<div className="compare-card">
 						{this.state.selectedPractice.map(item =>
 							<Compare key={item.id}
