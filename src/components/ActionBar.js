@@ -27,6 +27,15 @@ const ActionBar = (props, value) => {
 				<option value="Pedagogical">Pedagogical</option>
 				<option value="Professional">Professional</option>
 			</select>
+
+			<select selected={value} onChange={props.handleFilterMethod} id="">
+				<option value="All">Method</option>
+				<option value="Dissemination">Dissemination</option>
+				<option value="Empowerment">Empowerment</option>
+				<option value="Appropriation">Appropriation</option>
+				<option value="Subversion">Subversion</option>
+				<option value="Networking">Networking</option>
+			</select>
 		</div>
 
 		<div className="Btn-Group">
@@ -39,7 +48,7 @@ const ActionBar = (props, value) => {
 		<div className="Btn-Group">
 			<label htmlFor="Tags"><IconTag size={20}/>Tags</label>
 			<button value="Exemplar" id="Tags" onClick={props.handleTags}>Exemplars</button>
-			<button value="design/build" id="Tags" onClick={props.handleTags}>design/build</button>
+			<button value="Post 2008" id="Tags" onClick={props.handleTags}>Post 2008</button>
 			<button className="compare-button" onClick={props.handleCompare}><IconPlus size={15}/>Compare ({props.counter})</button>
 		</div>
 

@@ -14,6 +14,12 @@ export default function ManualPage(props) {
                 <br></br>
                 <h2>{props.variantB}</h2>
                 <p>{props.variantBDefinition}</p>
+                <br></br>
+                <h3>{props.variantC}</h3>
+                <h1>{props.variantCDefinition}</h1>
+                <br></br>
+                <h3>{props.variantD}</h3>
+                <p>{props.variantDDefinition}</p>
             </div>
             <div className="diagram">
                 {props.diagram}

@@ -15,7 +15,6 @@
 	grid-gap:1rem;
 	border: 1px solid black;;
 	border-top:0;
-	min-height:64vh;
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 }

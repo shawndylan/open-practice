@@ -33,3 +33,7 @@
   justify-content: space-around;
   font-size:2rem;
 }
+
+li {
+  list-style-type:none;
+}

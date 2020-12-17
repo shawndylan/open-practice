@@ -5,7 +5,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 import RangeSlider from 'react-bootstrap-range-slider';
 
 
-function ProjectCard({ Name, Location, ProjectType, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice, Locality, Autonomy, Conventionality, YearEnd, Tools, ProjectMethod, PracticeName}) {
+function ProjectCard({ Name, Location, ProjectType, Size, Motivation, Method, Image, Founded, id, keyPeople, keyProjects, url, addToSelected, practice, Locality, Autonomy, Conventionality, YearEnd, Tools, ProjectMethod, PracticeName, ProjectURL, Funding}) {
 
  const [flipped, setFlipped] = useState(false);
 
@@ -58,7 +58,7 @@ const separator = ", "
 							</div>
 						</div>
 						<div className="card-bottom">
-							<button className="add-button" onClick={() => addToSelected(practice)}><IconPlus className="plusIcon" size={20} stroke={2} /></button>
+							{/* <button className="add-button" onClick={() => addToSelected(practice)}><IconPlus className="plusIcon" size={20} stroke={2} /></button> */}
 							<button className="flip-button" onClick={handleClick}><IconArrowBarToRight className="flipIcon" size={20} stroke={2} /></button>
 						</div>
 					</div>
@@ -72,47 +72,22 @@ const separator = ", "
 						</div>
 
 						<div className="card-back-details">
-							<div className="card-back-details-slider">
-								<div className="slider-headingA">Global</div>
-								<div className="slider-headingB">Local</div>
-								<RangeSlider className="slider"
-									value={Locality}
-									min={0}
-									max={10}
-									tooltip={"off"}
-								/>
-							
-							
-								<div className="slider-headingA">Unconventional</div>
-								<div className="slider-headingB">Conventional</div>
-								<RangeSlider className="slider"
-									value={Conventionality}
-									min={0}
-									max={10}
-									tooltip={"off"}
-								/>
-							
-							
-								<div className="slider-headingA">Dependant</div>
-								<div className="slider-headingB">Autonomous</div>
-								<RangeSlider className="slider"
-									value={Autonomy}
-									min={0}
-									max={10}
-									tooltip={"off"}
-								/>
-							</div>
-							<div className="card-back-details-a">
-							`	<div className="card-heading">Key Tools</div>
-								<div className="card-text">{Tools}</div>`
-							</div>
-							<div className="card-back-details-b">
+							<div className="card-back-details-a-project">
 								<div className="card-heading">Key Method</div>
 								<div className="card-text">{ProjectMethod}</div>
 							</div>		
-							<div className="card-back-details-c">
+							<div className="card-back-details-b-project">
+								<div className="card-heading">Key Tools</div>
+								<div className="card-text">{Tools}</div>
+							</div>
+							
+							<div className="card-back-details-c-project">
+								<div className="card-heading">Funding Models</div>
+								<div className="card-text">{Funding}</div>
+							</div>
+							<div className="card-back-details-d-project">
 								<div className="card-heading">URL</div>
-								<div className="card-text"><a href={url} target="_blank">{url}</a></div>
+								<div className="card-text"><a href={ProjectURL} target="_blank">{ProjectURL}</a></div>
 							</div>
 						</div>
 						<div className="card-bottom">

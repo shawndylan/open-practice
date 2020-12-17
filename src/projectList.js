@@ -15,7 +15,7 @@ return (
 						<ProjectCard 
 							Name={project.fields.Name}
 							PracticeName={project.fields.PracticeName}
-							Location={project.fields.["Project Location"]}
+							Location={project.fields["Project Location"]}
 							Type={project.fields["Project Type"]}
 							Size={project.fields.Scale}
 							id={project.id}
@@ -24,8 +24,9 @@ return (
 							YearEnd={project.fields["Year End"]}
 							Tools={project.fields.ToolsUsed}
 							ProjectMethod={project.fields.ProjectMethod}
+							ProjectURL={project.fields.ProjectURL}
+							Funding={project.fields["Funding Type"]}
 						/>
-
 							{props.selectedValue === project.id ? (
 							<div className="window">
 								<Window 

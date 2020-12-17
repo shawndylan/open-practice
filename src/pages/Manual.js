@@ -5,8 +5,9 @@ import { ReactComponent as PracticeStructures} from '../svg/PracticeStructures.s
 import { ReactComponent as CollectiveStructure} from '../svg/CollectiveStructure.svg';
 import { ReactComponent as CooperativeStructure} from '../svg/CooperativeStructure.svg';
 import { ReactComponent as NonProfitStructure} from '../svg/NonProfitStructure.svg';
-import { ReactComponent as OfficeStructure} from '../svg/OfficeStructure.svg';
+// import { ReactComponent as OfficeStructure} from '../svg/OfficeStructure.svg';
 import { ReactComponent as NetworkStructure} from '../svg/NetworkStructure.svg';
+import { ReactComponent as PlatformStructure} from '../svg/PlatformStructure.svg';
 import { 
     IconBolt,
     IconSwitch,
@@ -201,7 +202,6 @@ class Manual extends Component {
                                 <Tab>Network</Tab>
                                 <Tab>Platform</Tab>
                                 <Tab>Non-Profit</Tab>
-                                <Tab>Baugruppen</Tab>
                             </TabList>
                             <TabPanel>
                             {this.state.structures.filter(item =>
@@ -224,8 +224,12 @@ class Manual extends Component {
                                     diagram={<CollectiveStructure/>}
                                     variantA={item.fields["Variant A"]}
                                     variantB={item.fields["Variant B"]}
+                                    variantC={item.fields["Variant C"]}
+                                    variantD={item.fields["Variant D"]}
                                     variantADefinition={item.fields["Variant A Definition"]}
                                     variantBDefinition={item.fields["Variant B Definition"]}
+                                    variantCDefinition={Math.round(item.fields["Variant C Definition"])}
+                                    variantDDefinition={item.fields["Variant D Definition"].map(practice => <li>{practice}</li>)}
                                     />
                                     )}
                                     
@@ -240,8 +244,12 @@ class Manual extends Component {
                                         diagram={<CooperativeStructure/>}
                                         variantA={item.fields["Variant A"]}
                                         variantB={item.fields["Variant B"]}
+                                        variantC={item.fields["Variant C"]}
+                                        variantD={item.fields["Variant D"]}
                                         variantADefinition={item.fields["Variant A Definition"]}
                                         variantBDefinition={item.fields["Variant B Definition"]}
+                                        variantCDefinition={Math.round(item.fields["Variant C Definition"])}
+                                        variantDDefinition={item.fields["Variant D Definition"].map(practice => <li>{practice}</li>)}
                                         />
                                         )}
                             </TabPanel>
@@ -255,8 +263,12 @@ class Manual extends Component {
                                             diagram={<NetworkStructure/>}
                                             variantA={item.fields["Variant A"]}
                                             variantB={item.fields["Variant B"]}
+                                            variantC={item.fields["Variant C"]}
+                                            variantD={item.fields["Variant D"]}
                                             variantADefinition={item.fields["Variant A Definition"]}
                                             variantBDefinition={item.fields["Variant B Definition"]}
+                                            variantCDefinition={Math.round(item.fields["Variant C Definition"])}
+                                            variantDDefinition={item.fields["Variant D Definition"].map(practice => <li>{practice}</li>)}
                                             />
                                             )}
                             </TabPanel>
@@ -267,11 +279,15 @@ class Manual extends Component {
                                                 key= {item.id}
                                                 term= {item.fields.Term}
                                                 definition= {item.fields.Definition}
-                                                diagram={<CooperativeStructure/>}
+                                                diagram={<PlatformStructure/>}
                                                 variantA={item.fields["Variant A"]}
                                                 variantB={item.fields["Variant B"]}
+                                                variantC={item.fields["Variant C"]}
+                                                variantD={item.fields["Variant D"]}
                                                 variantADefinition={item.fields["Variant A Definition"]}
                                                 variantBDefinition={item.fields["Variant B Definition"]}
+                                                variantCDefinition={Math.round(item.fields["Variant C Definition"])}
+                                                variantDDefinition={item.fields["Variant D Definition"].map(practice => <li>{practice}</li>)}
                                                 />
                                                 )}
                             </TabPanel>
@@ -285,8 +301,12 @@ class Manual extends Component {
                                                     diagram={<NonProfitStructure/>}
                                                     variantA={item.fields["Variant A"]}
                                                     variantB={item.fields["Variant B"]}
+                                                    variantC={item.fields["Variant C"]}
+                                                    variantD={item.fields["Variant D"]}
                                                     variantADefinition={item.fields["Variant A Definition"]}
                                                     variantBDefinition={item.fields["Variant B Definition"]}
+                                                    variantCDefinition={Math.round(item.fields["Variant C Definition"])}
+                                                    variantDDefinition={item.fields["Variant D Definition"].map(practice => <li>{practice}</li>)}
                                                     />
                                                     )}
                             </TabPanel>
@@ -302,7 +322,7 @@ class Manual extends Component {
                                 <Tab><IconBuildingCommunity size={18}/>Political</Tab>
                                 <Tab><IconHeart size={18}/>Social</Tab>
                                 <Tab><IconLeaf size={18}/>Ecological</Tab>
-                                <Tab><IconTrophy size={18}/>Profesional</Tab>
+                                <Tab><IconTrophy size={18}/>Professional</Tab>
                                 <Tab><IconSchool size={18}/>Pedagogical</Tab>
                             </TabList>
                             <TabPanel>
@@ -322,6 +342,8 @@ class Manual extends Component {
                                     key= {key.id}
                                     term= {item.fields.Term}
                                     definition= {item.fields.Definition}
+                                    variantD= {item.fields["Variant A"]}
+                                    variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                     />
                                     )}
                             </TabPanel>
@@ -332,6 +354,8 @@ class Manual extends Component {
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantD= {item.fields["Variant A"]}
+                                        variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                         />
                                         )}
                             </TabPanel>
@@ -342,6 +366,8 @@ class Manual extends Component {
                                             key= {key.id}
                                             term= {item.fields.Term}
                                             definition= {item.fields.Definition}
+                                            variantD= {item.fields["Variant A"]}
+                                            variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                             />
                                             )}
                             </TabPanel>
@@ -352,6 +378,8 @@ class Manual extends Component {
                                                 key= {key.id}
                                                 term= {item.fields.Term}
                                                 definition= {item.fields.Definition}
+                                                variantD= {item.fields["Variant A"]}
+                                                variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                                 />
                                                 )}
                             </TabPanel>
@@ -362,6 +390,8 @@ class Manual extends Component {
                                                     key= {key.id}
                                                     term= {item.fields.Term}
                                                     definition= {item.fields.Definition}
+                                                    variantD= {item.fields["Variant A"]}
+                                                    variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                                     />
                                                     )}
                             </TabPanel>
@@ -395,6 +425,8 @@ class Manual extends Component {
                                     key= {key.id}
                                     term= {item.fields.Term}
                                     definition= {item.fields.Definition}
+                                    variantD= {item.fields["Variant A"]}
+                                    variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                     />
                                     )}
                             </TabPanel>
@@ -405,38 +437,46 @@ class Manual extends Component {
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantD= {item.fields["Variant A"]}
+                                        variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                         />
                                         )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.methods.filter(item =>
-                                        item.fields.Term === 'Appropriation').map((item, key) =>
-                                        <ManualPage
-                                            key= {key.id}
-                                            term= {item.fields.Term}
-                                            definition= {item.fields.Definition}
-                                            />
-                                            )}
+                                    item.fields.Term === 'Appropriation').map((item, key) =>
+                                    <ManualPage
+                                        key= {key.id}
+                                        term= {item.fields.Term}
+                                        definition= {item.fields.Definition}
+                                        variantD= {item.fields["Variant A"]}
+                                        variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
+                                        />
+                                        )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.methods.filter(item =>
-                                            item.fields.Term === 'Subversion').map((item, key) =>
-                                            <ManualPage
-                                                key= {key.id}
-                                                term= {item.fields.Term}
-                                                definition= {item.fields.Definition}
-                                                />
-                                                )}
+                                    item.fields.Term === 'Subversion').map((item, key) =>
+                                    <ManualPage
+                                        key= {key.id}
+                                        term= {item.fields.Term}
+                                        definition= {item.fields.Definition}
+                                        variantD= {item.fields["Variant A"]}
+                                        variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
+                                        />
+                                        )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.methods.filter(item =>
-                                                item.fields.Term === 'Networking').map((item, key) =>
-                                                <ManualPage
-                                                    key= {key.id}
-                                                    term= {item.fields.Term}
-                                                    definition= {item.fields.Definition}
-                                                    />
-                                                    )}
+                                    item.fields.Term === 'Networking').map((item, key) =>
+                                    <ManualPage
+                                        key= {key.id}
+                                        term= {item.fields.Term}
+                                        definition= {item.fields.Definition}
+                                        variantD= {item.fields["Variant A"]}
+                                        variantDDefinition= {item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
+                                        />
+                                        )}
                             </TabPanel>
                         </Tabs>
                      </TabPanel>
@@ -445,15 +485,10 @@ class Manual extends Component {
                         <Tabs className="Funding-Models" forceRenderTabPanel defaultIndex={0}>
                             <TabList>
                                 <Tab>Overview</Tab>
-                                <Tab><IconAward size={18}/>Awards</Tab>
-                                <Tab><IconBrandOpenSource size={18}/>Crowd-Funding</Tab>
-                                <Tab>Grants</Tab>
-                                <Tab><IconBuildingArch size={18}/>Institutional Partnerships</Tab>
-                                <Tab><IconUserPlus size={18}/>Memberships</Tab>
-                                <Tab>Philanthropy</Tab>
-                                <Tab>Pooled Resources</Tab>
-                                <Tab><IconShoppingCart size={18}/>Products</Tab>
-                                <Tab><IconBuilding size={18}/>Space Management</Tab>
+                                <Tab><IconAward size={18}/>Application-Based</Tab>
+                                <Tab><IconUserPlus size={18}/>Economies of Scale</Tab>
+                                <Tab><IconBuildingArch size={18}/>Partnerships</Tab>
+                                <Tab><IconShoppingCart size={18}/>Value Creation</Tab>
                             </TabList>
                             <TabPanel>
                                 {this.state.fundingModels.filter(item =>
@@ -468,94 +503,52 @@ class Manual extends Component {
                             </TabPanel>
                             <TabPanel>
                                 {this.state.fundingModels.filter(item =>
-                                item.fields.Term === 'Awards').map((item, key) =>
+                                item.fields.Group === 'Application-Based').map((item, key) =>
                                 <ManualPage
                                     key= {key.id}
                                     term= {item.fields.Term}
                                     definition= {item.fields.Definition}
+                                    variantD= {item.fields["Variant A"]}
+                                    variantDDefinition={item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                 
                                     />
                                     )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.fundingModels.filter(item =>
-                                    item.fields.Term === 'Crowd-Funding').map((item, key) =>
+                                    item.fields.Group === 'Economies of Scale').map((item, key) =>
                                     <ManualPage
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantD= {item.fields["Variant A"]}
+                                    variantDDefinition={item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                         />
                                         )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.fundingModels.filter(item =>
-                                        item.fields.Term === 'Grants').map((item, key) =>
+                                        item.fields.Group === 'Partnerships').map((item, key) =>
                                         <ManualPage
                                             key= {key.id}
                                             term= {item.fields.Term}
                                             definition= {item.fields.Definition}
+                                            variantD= {item.fields["Variant A"]}
+                                            variantDDefinition={item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                             />
                                             )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.fundingModels.filter(item =>
-                                            item.fields.Term === 'Institutional Partnerships').map((item, key) =>
+                                            item.fields.Group === 'Value Creation').map((item, key) =>
                                             <ManualPage
                                                 key= {key.id}
                                                 term= {item.fields.Term}
                                                 definition= {item.fields.Definition}
+                                                variantD= {item.fields["Variant A"]}
+                                                variantDDefinition={item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
                                                 />
                                                 )}
-                            </TabPanel>
-                            <TabPanel>
-                                {this.state.fundingModels.filter(item =>
-                                                item.fields.Term === 'Memberships').map((item, key) =>
-                                                <ManualPage
-                                                    key= {key.id}
-                                                    term= {item.fields.Term}
-                                                    definition= {item.fields.Definition}
-                                                    />
-                                                    )}
-                            </TabPanel>
-                            <TabPanel>
-                                {this.state.fundingModels.filter(item =>
-                                                item.fields.Term === 'Philanthropy').map((item, key) =>
-                                                <ManualPage
-                                                    key= {key.id}
-                                                    term= {item.fields.Term}
-                                                    definition= {item.fields.Definition}
-                                                    />
-                                                    )}
-                            </TabPanel>
-                            <TabPanel>
-                                {this.state.fundingModels.filter(item =>
-                                                item.fields.Term === 'Pooled Resources').map((item, key) =>
-                                                <ManualPage
-                                                    key= {key.id}
-                                                    term= {item.fields.Term}
-                                                    definition= {item.fields.Definition}
-                                                    />
-                                                    )}
-                            </TabPanel>
-                            <TabPanel>
-                                {this.state.fundingModels.filter(item =>
-                                                item.fields.Term === 'Products').map((item, key) =>
-                                                <ManualPage
-                                                    key= {key.id}
-                                                    term= {item.fields.Term}
-                                                    definition= {item.fields.Definition}
-                                                    />
-                                                    )}
-                            </TabPanel>
-                            <TabPanel>
-                                {this.state.fundingModels.filter(item =>
-                                                item.fields.Term === 'Space Management').map((item, key) =>
-                                                <ManualPage
-                                                    key= {key.id}
-                                                    term= {item.fields.Term}
-                                                    definition= {item.fields.Definition}
-                                                    />
-                                                    )}
                             </TabPanel>
                         </Tabs>
                      </TabPanel>

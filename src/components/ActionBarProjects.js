@@ -27,9 +27,9 @@ const ActionBarProjects = (props, value) => {
 		<div className="Btn-Group">
 			<label htmlFor="Tags"><IconTag size={20}/>Tags</label>
 			<button value="self-initiated" id="Tags" onClick={props.handleTags}>self-initiated</button>
-			<button value="self-funded" id="Tags" onClick={props.handleTags}>self-funded</button>
+			{/* <button value="self-funded" id="Tags" onClick={props.handleTags}>self-funded</button> */}
 			<button value="self-built" id="Tags" onClick={props.handleTags}>self-built</button>
-			<button className="compare-button" onClick={props.handleCompare}><IconPlus size={15}/>Compare ({props.counter})</button>
+			{/* <button className="compare-button" onClick={props.handleCompare}><IconPlus size={15}/>Compare ({props.counter})</button> */}
 		</div>
 
 		<div className="Btn-Group-Search">

@@ -158,7 +158,7 @@ class CardContainer extends Component {
 	handleFilterStructure = (e) => {
 		e.preventDefault();
 		if (e.target.value === "All") {
-			this.setState({practices: this.state.practices});
+			this.setState({value: this.state.practices});
 		} else {
 			this.setState({value: this.state.practices.filter(record => record.fields["Practice Structure"][0] === e.target.value)});
 			console.log(e.target.value);
@@ -171,6 +171,16 @@ class CardContainer extends Component {
 			this.setState({value: this.state.practices});
 		} else {
 			this.setState({value: this.state.practices.filter(record => record.fields.Motivation === e.target.value)});
+			console.log(e.target.value);
+		}
+	}
+
+	handleFilterMethod = (e) => {
+		e.preventDefault();
+		if (e.target.value === "All") {
+			this.setState({value: this.state.practices});
+		} else {
+			this.setState({value: this.state.practices.filter(record => record.fields.Method === e.target.value)});
 			console.log(e.target.value);
 		}
 	}
@@ -250,7 +260,10 @@ class CardContainer extends Component {
 								counter={this.state.selectedPractice.length}
 								orgChart={item.fields["Org Chart"][0].url}
 								countryDiagram={item.fields["Country Diagram"][0].url}
+								fundingModel={item.fields["Funding Model"].map((item, key) => {return (<div key={key}>{item}</div>)})}
 								Locality={item.fields["Locality Score"]}
+								icon={<IconArrowBack size={20}/>}
+								projectImage={item.fields["Project Image"][0].url}
 							/>
 						)}
 					</div>
@@ -274,7 +287,7 @@ class CardContainer extends Component {
 
 			const sortedProjects = this.state.valueB.sort((a,b) => {
 				if (this.state.sort === "founded") {
-					return parseInt(a.fields["Year Start"]) - parseInt(b.fields["Year Start"])
+					return parseInt(b.fields["Year Start"]) - parseInt(a.fields["Year Start"])
 				}
 				else if (this.state.sort === "name") {
 					return a.fields.Name.localeCompare(b.fields.Name)
@@ -298,6 +311,7 @@ class CardContainer extends Component {
 							<ActionBar 
 								handleFilterStructure={this.handleFilterStructure}
 								handleFilterMot = {this.handleFilterMot}
+								handleFilterMethod = {this.handleFilterMethod}
 								handleSearch={this.handleSearch}
 								value={this.state.value} 
 								handleSort={this.handleSortPractices} 

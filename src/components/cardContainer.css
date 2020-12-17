@@ -9,22 +9,13 @@
 	text-align:center;
 }
 
-::-webkit-scrollbar { 
-  display: none; 
-  }
-
   .compare-card {
-    display:grid;
+    display:flex;
     grid-auto-flow:column;
     overflow:scroll;
   }
 
   .back-button:hover {
-    colour:white;
-    background-color: black;
-  }
+    background-color:white;
 
-
-  .back-button-link:hover {
-    color:white
   }

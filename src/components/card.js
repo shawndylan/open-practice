@@ -107,6 +107,7 @@ const handleClick = () => {
 							</div>
 						</div>
 						<div className="card-bottom">
+							<button className="add-button" onClick={() => addToSelected(practice)}><IconPlus className="plusIcon" size={20} stroke={2} /></button>
 							<button className="flip-button" onClick={handleClick}><IconArrowBarToRight className="flipIcon" size={20} stroke={2} /></button>
 						</div>
 					</div>

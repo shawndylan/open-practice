@@ -20,8 +20,6 @@ function PracticeList(props) {
 							Method={practice.fields.Method}
 							Size={practice.fields.Size}
 							Image={practice.fields.CoverImage[0].url}
-							ImageHeight={practice.fields.CoverImage[0].thumbnails.small.height}
-							ImageWidth={practice.fields.CoverImage[0].thumbnails.small.width}
 							Founded={practice.fields["Period Active"]}
 							openModal={props.openModal}
 							id={practice.id}
@@ -30,9 +28,10 @@ function PracticeList(props) {
 							url={practice.fields["Website URL"]}
 							addToSelected={props.addToSelected}
 							practice={practice}
-							Locality={practice.fields["Locality Score"]}
-							Conventionality={practice.fields["Conventionality Score"]}
-							Autonomy={practice.fields["Autonomy Score"]}
+							Locality={practice.fields.Locality}
+							Conventionality={practice.fields.Conventionality}
+							Autonomy={practice.fields.Autonomy}
+							
 						/>
 
 							{/* {props.selectedValue === practice.id ? (
