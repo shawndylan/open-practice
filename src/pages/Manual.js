@@ -661,12 +661,11 @@ class Manual extends Component {
                             <TabPanel>
                                 <div className="manual-container">
                                     {this.state.tools.filter(item =>
-                                    item.fields.Term === 'Overview').map((item, key) =>
+                                    item.fields.Method === 'Overview').map((item, key) =>
                                     <ManualPage
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
-                                        usedBy={item.fields["Used By"]}
                                         />
                                         )}
                                 </div>
@@ -679,7 +678,12 @@ class Manual extends Component {
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
-                                        usedBy={item.fields["Used By"]}
+                                        variantA={item.fields["Variant A"]}
+                                        variantADefinition={item.fields["Variant A Definition"].map(item => <li>{item}</li>)}
+                                        variantC={item.fields["Variant B"]}
+                                        variantCDefinition={item.fields["Variant B Definition"].map(item => <li>{item}</li>)}
+                                        variantD={item.fields["Variant C"]}
+                                        variantDDefinition={item.fields["Variant C Definition"].map(item => <li><a href={item}>{item}</a></li>)}
                                         />
                                         )}
                                 </div>
@@ -691,16 +695,24 @@ class Manual extends Component {
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantC={item.fields["Variant B"]}
+                                        variantCDefinition={item.fields["Variant B Definition"].map(item => <li>{item}</li>)}
+                                        variantD={item.fields["Variant C"]}
+                                        variantDDefinition={item.fields["Variant C Definition"].map(item => <li><a href={item}>{item}</a></li>)}
                                         />
                                         )}
                             </TabPanel>
                             <TabPanel>
                                 {this.state.tools.filter(item =>
-                                    item.fields.Method === 'Appropriation').map((item, key) =>
+                                    item.fields.Method === 'Appropriation' && item.fields.Term !== "Overview").map((item, key) =>
                                     <ManualPage
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantC={item.fields["Variant B"]}
+                                        variantCDefinition={item.fields["Variant B Definition"].map(item => <li>{item}</li>)}
+                                        variantD={item.fields["Variant C"]}
+                                        variantDDefinition={item.fields["Variant C Definition"].map(item => <li><a href={item}>{item}</a></li>)}
                                         />
                                         )}
                             </TabPanel>
@@ -711,6 +723,10 @@ class Manual extends Component {
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantC={item.fields["Variant B"]}
+                                        variantCDefinition={item.fields["Variant B Definition"].map(item => <li>{item}</li>)}
+                                        variantD={item.fields["Variant C"]}
+                                        variantDDefinition={item.fields["Variant C Definition"].map(item => <li><a href={item}>{item}</a></li>)}
                                         />
                                         )}
                             </TabPanel>
@@ -721,6 +737,10 @@ class Manual extends Component {
                                         key= {key.id}
                                         term= {item.fields.Term}
                                         definition= {item.fields.Definition}
+                                        variantC={item.fields["Variant B"]}
+                                        variantCDefinition={item.fields["Variant B Definition"].map(item => <li>{item}</li>)}
+                                        variantD={item.fields["Variant C"]}
+                                        variantDDefinition={item.fields["Variant C Definition"].map(item => <li><a href={item}>{item}</a></li>)}
                                         />
                                         )}
                             </TabPanel>

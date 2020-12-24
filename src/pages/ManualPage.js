@@ -16,7 +16,7 @@ export default function ManualPage(props) {
                 <p>{props.variantBDefinition}</p>
                 <br></br>
                 <h3>{props.variantC}</h3>
-                <h1>{props.variantCDefinition}</h1>
+                <p>{props.variantCDefinition}</p>
                 <br></br>
                 <h3>{props.variantD}</h3>
                 <p>{props.variantDDefinition}</p>
