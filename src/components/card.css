@@ -72,7 +72,7 @@
 }
 
 .cover-image {
-	max-width:250px;
+	width:250px;
 	background-size:contain;
   	background-repeat:no-repeat;
   	object-fit:cover;
